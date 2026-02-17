@@ -1,0 +1,29 @@
+# Setup Wizard Implementation Plan
+
+- [x] Create `cmd/setup/main.go` with package main and empty main function
+- [x] Add setup module to go.mod with required dependencies
+- [x] Implement config file detection logic (Step 1): check cwd and executable directory for config.yaml and .env
+- [x] Implement function to load existing config.yaml if present
+- [x] Implement function to load and mask existing .env API keys
+- [x] Implement Telegram Bot Token prompt (Step 2) with masked display of existing value
+- [x] Add validation for non-empty token when no existing value
+- [x] Implement Provider enable/disable prompts (Step 3) for all 5 providers (OpenAI, Anthropic, OpenRouter, OpenCode, Ollama)
+- [x] Add warning for enabled provider with missing API key
+- [x] Implement API key prompt (Step 4a) for each enabled provider with [SET] placeholder and hidden input
+- [x] Add validation requiring API key for enabled provider when no existing key
+- [x] Implement default model prompt (Step 4b) for each enabled provider with built-in defaults
+- [x] Implement Allowed Users prompt (Step 5) with comma-separated input parsing
+- [x] Add validation: numeric IDs only, remove duplicates, trim whitespace
+- [x] Add error message for non-numeric values: "Invalid user ID: [value]. Must be numeric."
+- [x] Implement Session Path prompt (Step 6a) with default "./data/sessions"
+- [x] Implement Max Messages prompt (Step 6b) with default 50, integer validation >= 0
+- [x] Add error handling for negative, non-numeric, and decimal input
+- [x] Implement config.yaml writing with YAML format and 2-space indentation
+- [x] Implement .env writing preserving non-helpi variables
+- [x] Add error handling for file write failures with retry option
+- [x] Add success output: "✓ Configuration saved to config.yaml", "✓ Secrets saved to .env", "Run the bot with: go run ./cmd/bot"
+- [x] Add error output: "✗ Error: [description]"
+- [ ] Implement Ctrl+C handling to abort without saving and show "Setup cancelled."
+- [x] Test initial setup flow (no existing config)
+- [ ] Test update flow (existing config.yaml and .env)
+- [ ] Test edge cases: malformed config, empty config, partial existing config
