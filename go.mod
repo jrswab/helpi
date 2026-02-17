@@ -3,7 +3,7 @@ module github.com/jrswab/helpi
 go 1.24.4
 
 require (
-	github.com/anthropics/anthropic-sdk-go v1.22.1 // indirect
+	github.com/anthropics/anthropic-sdk-go v1.23.0 // indirect
 	github.com/go-telegram/bot v1.18.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/openai/openai-go/v3 v3.22.0 // indirect
